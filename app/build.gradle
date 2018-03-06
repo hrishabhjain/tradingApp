@@ -1,0 +1,51 @@
+
+apply plugin: 'com.android.application'
+
+android {
+
+    def globalConfiguration = rootProject.extensions.getByName("ext")
+
+    dataBinding {
+        enabled = true
+    }
+
+    compileSdkVersion globalConfiguration.getAt("androidCompileSdkVersion")
+    defaultConfig {
+        applicationId "com.tradingapp"
+        minSdkVersion globalConfiguration.getAt("androidMinSdkVersion")
+        targetSdkVersion globalConfiguration.getAt("androidTargetSdkVersion")
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    //region android support
+    api androidSupport.design
+    api androidSupport.supportV4
+    api androidSupport.appCompatV7
+    api androidSupport.recyclerViewV7
+    api androidSupport.customTabs
+    //endregion
+
+    annotationProcessor dependencyInjectionDependencies.daggerCompiler
+    api dependencyInjectionDependencies.dagger
+
+    compile functionalProgrammingDependencies.rxJava
+    compile functionalProgrammingDependencies_bt.rxAndroid
+
+    api miscellaneousDependencies.gson
+    api miscellaneousDependencies_bt.okHttp3
+
+    compile 'com.github.nkzawa:socket.io-client:0.3.0'
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.0.3'
+}

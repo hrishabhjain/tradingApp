@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+        <import type="android.widget.LinearLayout"/>
+
+        <variable
+            name="model"
+            type="com.tradingapp.HomeViewModel" />
+
+        <variable
+            name="title"
+            type="String" />
+    </data>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/tv_cake"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="CAKE"
+                    android:layout_margin="16dp"
+                    android:textSize="20sp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:layout_toRightOf="@id/tv_cake"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:text="@{model.liveRate}"
+                    android:textSize="20sp"
+                    android:layout_margin="16dp" />
+
+                <com.github.mikephil.charting.charts.LineChart
+                    android:id="@+id/chart"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_below="@+id/tv_cake"/>
+
+                <LinearLayout
+                    android:id="@+id/ll_dummy_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="6"
+                    android:layout_margin="16dp"
+                    android:layout_below="@id/chart">
+
+                    <TextView
+                        style="@style/TextViewTimeRange"
+                        android:text="1D"
+                        />
+
+                    <TextView
+                        style="@style/TextViewTimeRange"
+                        android:text="1M"
+                        />
+
+                    <TextView
+                        style="@style/TextViewTimeRange"
+                        android:text="1Y"
+                        android:background="@color/colorPrimaryDark"
+                        android:textColor="@color/white"
+                        />
+
+                    <TextView
+                        style="@style/TextViewTimeRange"
+                        android:text="YTD"
+                        />
+
+                    <TextView
+                        style="@style/TextViewTimeRange"
+                        android:text="5Y"
+                        />
+
+                    <TextView
+                        style="@style/TextViewTimeRange"
+                        android:text="ALL"
+                        />
+                </LinearLayout>
+                <!-- Dummy data start-->
+                <LinearLayout
+                    android:id="@+id/ll_data"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_below="@id/ll_dummy_time"
+                    android:paddingTop="16dp"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp">
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/grey"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:weightSum="2"
+                        android:paddingTop="8dp"
+                        android:paddingBottom="8dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:weightSum="3"
+                            android:layout_weight="1">
+
+                            <TextView
+                                style="@style/TextViewTag"
+                                android:text="Day High"
+                                />
+
+                            <TextView
+                                style="@style/TextViewData"
+                                android:text="$1181"
+                                />
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:weightSum="3"
+                            android:layout_weight="1">
+
+                            <TextView
+                                style="@style/TextViewTag"
+                                android:text="Day Low"
+                                />
+
+                            <TextView
+                                style="@style/TextViewData"
+                                android:text="$931"
+                                />
+
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/grey"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:weightSum="2"
+                        android:paddingTop="8dp"
+                        android:paddingBottom="8dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:weightSum="3"
+                            android:layout_weight="1">
+
+                            <TextView
+                                style="@style/TextViewTag"
+                                android:text="Open"
+                                />
+
+                            <TextView
+                                style="@style/TextViewData"
+                                android:text="$950"
+                                />
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:weightSum="3"
+                            android:layout_weight="1">
+
+                            <TextView
+                                style="@style/TextViewTag"
+                                android:text="Today's close"
+                                />
+
+                            <TextView
+                                style="@style/TextViewData"
+                                android:text="$1150"
+                                />
+
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/grey"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:weightSum="2"
+                        android:paddingTop="8dp"
+                        android:paddingBottom="8dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:weightSum="3"
+                            android:layout_weight="1">
+
+                            <TextView
+                                style="@style/TextViewTag"
+                                android:text="Avg. Volume"
+                                />
+
+                            <TextView
+                                style="@style/TextViewData"
+                                android:text="74.6mn"
+                                />
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:weightSum="3"
+                            android:layout_weight="1">
+
+                            <TextView
+                                style="@style/TextViewTag"
+                                android:text="Volume"
+                                />
+
+                            <TextView
+                                style="@style/TextViewData"
+                                android:text="44.5m"
+                                />
+
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/grey"
+                        />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:weightSum="2"
+                        android:paddingTop="8dp"
+                        android:paddingBottom="8dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:weightSum="3"
+                            android:layout_weight="1">
+
+                            <TextView
+                                style="@style/TextViewTag"
+                                android:text="52wk Low"
+                                />
+
+                            <TextView
+                                style="@style/TextViewData"
+                                android:text="$850"
+                                />
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:weightSum="3"
+                            android:layout_weight="1">
+
+                            <TextView
+                                style="@style/TextViewTag"
+                                android:text="52wk high"
+                                />
+
+                            <TextView
+                                style="@style/TextViewData"
+                                android:text="$1180"
+                                />
+
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/grey"
+                        />
+
+                </LinearLayout>
+                <!-- Dummy data end-->
+            </RelativeLayout>
+        </ScrollView>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="2"
+            android:orientation="horizontal"
+            android:layout_margin="16dp"
+            android:layout_alignParentBottom="true">
+            <android.support.v7.widget.AppCompatButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="BUY"
+                android:layout_marginRight="16dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:paddingRight="48dp"
+                android:paddingLeft="48dp"
+                android:background="@color/colorPrimaryDark"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:layout_weight="1"
+                />
+
+            <android.support.v7.widget.AppCompatButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SELL"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:paddingRight="48dp"
+                android:paddingLeft="48dp"
+                android:background="@color/colorPrimaryDark"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:layout_weight="1"
+                />
+        </LinearLayout>
+    </RelativeLayout>
+
+</layout>
